@@ -1,0 +1,70 @@
+==============================================================================
+Compiling Bassovac
+==============================================================================
+
+------------------------------------------------------------------------------
+1) Dependencies
+------------------------------------------------------------------------------
+
+The build process requires the following tools:
+    CMake 2.8   (http://www.cmake.org)
+    boost 1.40+ (http://www.boost.org)
+
+If you are running a recent, debian based distro this may work for you:
+
+    sudo apt-get install libboost-all-dev cmake
+
+------------------------------------------------------------------------------
+2) Setup build environment
+------------------------------------------------------------------------------
+
+First, make sure your checkout is complete by initializing the build-common
+submodule:
+
+    git submodule update --init build-common
+
+
+Next, create an out-of-source build directory, change into it, and run cmake
+with the path to the top of the bassovac checkout. For example, to build in a
+subdirectory of the checkout called 'build', one runs:
+
+    mkdir build
+    cd build
+    cmake ..
+
+Or to build in /tmp:
+
+    mkdir /tmp/build-bassovac
+    cd /tmp/build-bassovac
+    cmake ~/path/to/bassovac/checkout
+
+------------------------------------------------------------------------------
+3) Build and test
+------------------------------------------------------------------------------
+
+To build, simply run make in the build directory.  Once make is finished, you
+can run the unit test suite by executing 'ctest' from the build directory. All
+binaries can be found in the bin/ subdirectory where you built.
+
+
+==============================================================================
+Output Format
+==============================================================================
+
+The tab separated output fields are:
+
+ 1) sequence name (chromosome)
+ 2) start position 
+ 3) end position 
+ 4) reference base
+ 5) total normal reads at this position
+ 6) # normal reads supporting reference
+ 7) harmonic mean of normal base qualities
+ 8) total tumor reads at this position
+ 9) # tumor reads supporting reference
+10) harmonic mean of tumor base qualities
+11) probability of homozygous variant
+12) probability of heterozygous variant
+13) probability of somatic variant
+14) probability of loss of heterozygosity event
+15) probability of 'non-interesting' event
